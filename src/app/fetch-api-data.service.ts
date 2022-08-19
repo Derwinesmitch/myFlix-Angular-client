@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://movieappcf.herokuapp.com';
+const apiUrl = 'https://movieappcf.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +19,12 @@ export class UserRegistrationService {
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
+    catchError(this.handleError)
+    );
+  }
+ 
+  public userLogin(userDetails: any): Observable<any> {
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
     catchError(this.handleError)
     );
   }
