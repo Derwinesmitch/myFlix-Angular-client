@@ -3,7 +3,6 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MovieCardComponent } from './movie-card/movie-card.component'
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://movieappcf.herokuapp.com/';
 @Injectable({
@@ -53,9 +52,9 @@ export class UserRegistrationService {
   );
  }
 
- getDirector(name: any): Observable<any> {
+ getDirector(director: string): Observable<any> {
   const token = localStorage.getItem('token');
-  return this.http.get(apiUrl + `movies/directors/${name}`, {
+  return this.http.get(`${apiUrl}movies/directors/${director}`, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
     })
@@ -81,7 +80,7 @@ export class UserRegistrationService {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
 
-  return this.http.get(apiUrl + `users/${username}`, {
+  return this.http.get(`${apiUrl}users/${username}`, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
     })
@@ -163,7 +162,7 @@ export class UserRegistrationService {
 
  private extractResponseData(res: any): any {
   const body = res;
-  return body ||{};
+  return body || {};
  }
 
 
