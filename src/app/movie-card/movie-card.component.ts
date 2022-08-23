@@ -14,15 +14,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MovieCardComponent implements OnInit {
   
   movies: any[] = [];
+  favouriteMovies: any[] = [];
 
 
   constructor(public fetchMovies: UserRegistrationService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    ) { }
+    ) {}
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavouriteMovies();
   }
 
   getMovies(): void {
@@ -32,6 +34,19 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     });
   }
+
+  getFavouriteMovies(): void {
+    this.fetchMovies.getFavouriteMovies().subscribe((resp: any) => {
+      this.favouriteMovies = resp;
+      console.log(this.favouriteMovies);
+      return this.favouriteMovies;
+    });
+  }
+  
+  isFav(id: string): boolean {
+    return this.favouriteMovies.includes(id);
+  }
+
 
   openDirectorDialog(name: string, bio: string, birthday: string): void {
     this.dialog.open(DirectorComponent, {
@@ -59,6 +74,22 @@ export class MovieCardComponent implements OnInit {
         Description: description,
       },
       width: '500px',
+    });
+  }
+
+  addFavouriteMovie(id: string): void {
+    console.log(id);
+    this.fetchMovies.addFavouriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
+
+  deleteFavouriteMovie(id: string): void {
+    console.log(id);
+    this.fetchMovies.deleteFavouriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
     });
   }
 }

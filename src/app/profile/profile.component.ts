@@ -3,6 +3,7 @@ import { UserRegistrationService } from '../fetch-api-data.service'
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router'
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ user: any = {};
   constructor(  public fetchApiData: UserRegistrationService,
   public dialog: MatDialog,
   public router: Router,
-  public snackbar: MatSnackBar
+  public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -30,4 +31,31 @@ user: any = {};
     });
   }
 
+  openEditProfileDialog(): void {
+    this.dialog.open(EditProfileComponent, {
+      width: '300px',
+    });
+  }
+
+  deleteProfile(): void {
+    if (
+      confirm(
+        'Are you sure you want to delete the account?'
+      )
+    ) { 
+    this.router.navigate(['welcome']).then(() => {
+      this.snackBar.open(
+        'You have deleted your account',
+        'Ok',
+        {
+          duration: 2000,
+        }
+      );
+    });
+    this.fetchApiData.deleteUser().subscribe((result) => {
+      console.log(result);
+      localStorage.clear();
+    });
+  }
+}
 }

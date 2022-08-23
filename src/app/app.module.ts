@@ -25,14 +25,29 @@ import { GenreComponent } from './genre/genre.component';
 import { SynopsisComponent } from './synopsis/synopsis.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
+
+// const appRoutes: Routes = [
+//   { path: 'welcome', component: WelcomePageComponent },
+//   { path: 'movies', component: MovieCardComponent },
+//   { path: 'profile', component: ProfileComponent },
+//   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+// ];
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
-];
 
+  { path: 'welcome', component: WelcomePageComponent },
+  
+  { path: 'movies', component: MovieCardComponent },
+  
+  { path: 'profile', component: ProfileComponent },
+  
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  
+  ];
+  
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +60,7 @@ const appRoutes: Routes = [
     SynopsisComponent,
     ProfileComponent,
     NavbarComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

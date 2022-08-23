@@ -1,9 +1,14 @@
+$backgroundColor: #c8ef70;
+$cardColor:  #BD8DFF;
+$textColor: #363636;
+
 .movie-view {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px 0;
+    background-color: $backgroundColor;
 }
 
 
@@ -14,6 +19,7 @@
     align-items: center;
     position: relative;
     max-width: 280px;
+    background-color: $cardColor;
     width: 280px;
     margin: 15px;
     padding: 20px 3px;
@@ -23,6 +29,7 @@
     height: 80px;
     display: flex;
     align-items: center;
+    color: $textColor;
 }
 
 .mat-icon-button {
