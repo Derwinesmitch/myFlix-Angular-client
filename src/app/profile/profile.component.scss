@@ -1,0 +1,49 @@
+$backgroundColor: #c8ef70;
+$cardColor:  #BD8DFF;
+$textColor: #363636;
+
+.user-profile{
+display: flex;
+background-color: $backgroundColor;
+flex-direction: column;
+align-items: center;
+padding: 30px 40px; 
+}
+
+.user-profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    background-color: $backgroundColor;
+}
+
+.user-profile-card {
+    margin-top: 50px;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+
+}
+
+
+.mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 280px;
+    background-color: $backgroundColor;
+    width: 280px;
+    margin: 15px;
+    padding: 20px 3px;
+}
+
+.mat-card-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: $textColor;
+}
+
